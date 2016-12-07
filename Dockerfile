@@ -1,4 +1,4 @@
-FROM paulflorea/python3-uwsgi:latest-alpine
+FROM paulflorea/python3-uwsgi:alpine
 
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories;\
     echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories;\
