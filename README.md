@@ -4,13 +4,15 @@ To setup your application: put your requirements.txt file in the ./src directory
 
 
 ```
-FROM paulflorea/python3-uwsgi:latest
+FROM paulflorea/python3-uwsgi-scipy-numpy:alpine
 
 # install my packages
 ADD . /var/www/app/
 RUN pip install -r /var/www/app/src/requirements.txt
 
-# set user
+# add uwsgi user
+RUN addgroup -g 50 -S www-data;\
+    adduser -S -G www-data -u 50 -s /bin/bash -h www-data www-data
 USER www-data
 
 CMD uwsgi --ini /var/www/app/uwsgi/uwsgi.ini --callable app
