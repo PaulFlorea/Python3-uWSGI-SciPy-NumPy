@@ -10,4 +10,4 @@ RUN apk add ca-certificates gcc g++ curl openblas-dev
 # Create link to file for SciPy
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 
-RUN pip install numpy scipy
+RUN pip install numpy==1.10.1 scipy==0.16.1
