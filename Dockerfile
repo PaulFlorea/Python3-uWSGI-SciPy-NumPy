@@ -1,13 +1,9 @@
-FROM paulflorea/python3-uwsgi:alpine
+FROM python3-uwsgi:test
 
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories;\
     echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories;\
     apk upgrade --update-cache --available
 
-# System dependencies
-RUN apk add ca-certificates gcc g++ curl openblas-dev
-
-# Create link to file for SciPy
-RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
-
-RUN pip install numpy scipy
+RUN apk update && apk upgrade && apk add --no-cache --update\
+        py3-numpy\
+        py3-scipy
