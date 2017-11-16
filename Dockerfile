@@ -6,5 +6,6 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repos
 
 # Installing scipy and numpy
 RUN apk update && apk upgrade && apk add --no-cache --update\
-        py3-numpy\
-        py3-scipy
+        py3-numpy \
+        py3-scipy \
+        && rm -rf /var/cache/apk/* # Delete the cache folder to save some space
